@@ -4,10 +4,11 @@ define_route(){
 
 	if [[ -z "$1" || -z "$2" ]]; then
 		log_error "NOT ENOUGH ARGUMENTS"
+		exit 1
 	fi
 
-	log_info "DIRECTORY CREATED"
-
 	mkdir -p "$1/$2"
+
+	log_info "DIRECTORY CREATED"
 
 }

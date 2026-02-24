@@ -8,9 +8,34 @@ if [ $# -eq 0 ]; then
        	exit 1 	
 fi
 
+while [[ $# -gt 0 ]]; do
+	case "$1" in
+		-n|--name)
+			NAME="$2"
+			shift 2
+			;;
+		-r|--root)
+			ROOT_DIRECTORY="$2"
+			shift 2
+			;;
+		--)
+			shift
+			break
+			;;
+		-*)
+			log_error "UNKNOW OPTION"
+			exit 1
+			;;
+		*)
+			log_error "UNKNOW ARGUMENT"
+			exit 1
+			;;
+	esac
+done
+
 main() {
 	log_info "INITIALIZING SCRIPT"
-	define_route $1 $2
+	define_route $ROOT_DIRECTORY $NAME
 } 
 
 main "$@"
