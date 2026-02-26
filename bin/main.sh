@@ -23,11 +23,11 @@ while [[ $# -gt 0 ]]; do
 			break
 			;;
 		-*)
-			log_error "UNKNOW OPTION"
+			log_error "UNKNOWN OPTION"
 			exit 1
 			;;
 		*)
-			log_error "UNKNOW ARGUMENT"
+			log_error "UNKNOWN ARGUMENT"
 			exit 1
 			;;
 	esac
@@ -35,7 +35,7 @@ done
 
 main() {
 	log_info "INITIALIZING SCRIPT"
-	define_route $ROOT_DIRECTORY $NAME
+	define_route "$ROOT_DIRECTORY" "$NAME"
 } 
 
 main "$@"
