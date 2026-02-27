@@ -34,4 +34,5 @@ create_subdirectories(){
 	done
 
 	log_info "SUBDIRECTORIES CREATED"
+
 }

@@ -2,6 +2,7 @@
 
 source "$(dirname "$0")/../lib/logs.sh"
 source "$(dirname "$0")/../lib/dirCreation.sh"
+source "$(dirname "$0")/../lib/filesCreation.sh"
 
 if [ $# -eq 0 ]; then
 	log_error "NOT ENOUGH ARGUMENTS"
@@ -36,6 +37,9 @@ done
 main() {
 	log_info "INITIALIZING SCRIPT"
 	define_route "$ROOT_DIRECTORY" "$NAME"
+	log_info "DIRECTORIES PROCESS COMPLETED"
+	create_README	
+	
 } 
 
 main "$@"
