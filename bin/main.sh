@@ -3,6 +3,7 @@
 source "$(dirname "$0")/../lib/logs.sh"
 source "$(dirname "$0")/../lib/dirCreation.sh"
 source "$(dirname "$0")/../lib/filesCreation.sh"
+source "$(dirname "$0")/../lib/languageDef.sh"
 
 if [ $# -eq 0 ]; then
 	log_error "NOT ENOUGH ARGUMENTS"
@@ -17,6 +18,10 @@ while [[ $# -gt 0 ]]; do
 			;;
 		-r|--root)
 			ROOT_DIRECTORY="$2"
+			shift 2
+			;;
+		-l|--lang)
+			LANGUAGE="$2"
 			shift 2
 			;;
 		--)
@@ -38,6 +43,7 @@ main() {
 	log_info "INITIALIZING SCRIPT"
 	define_route "$ROOT_DIRECTORY" "$NAME"
 	log_info "DIRECTORIES PROCESS COMPLETED"
+	check_language "$LANGUAGE"
 	create_README	
 	
 } 
