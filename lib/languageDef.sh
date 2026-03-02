@@ -11,7 +11,7 @@ check_language() {
             ;;
         *)
             log_error "UNKNOWN OR UNSUPPORTED LANGUAGE"
-            exit 1;
+            return 1;
             ;;
     esac
 }

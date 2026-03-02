@@ -19,3 +19,7 @@ log_info() {
 log_error() {
 	log "ERROR" "$1"
 }
+
+log_exit() {
+	log "EXIT" "$1"
+}
