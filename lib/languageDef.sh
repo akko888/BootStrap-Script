@@ -1,17 +1,18 @@
+declare -A LANGUAGES
+
+LANGUAGES=(
+    [c]="c"
+    [cpp]="cpp"
+)
+
 check_language() {
+    local lang="$1"
 
-    log_info "CHECKING LANGUAGE"
+    log_info "CHECKING LANGUAGE..."
 
-    case "$1" in
-        "c")
-            log_info "LANGUAGE SELECTED: C"
-            ;;
-        "cpp") 
-            log_info "LANGUAGE SELECTED: C++"
-            ;;
-        *)
-            log_error "UNKNOWN OR UNSUPPORTED LANGUAGE"
-            return 1;
-            ;;
-    esac
+    if [[ -n "${LANGUAGES[$lang]:-}" ]]; then
+        log_info "LANGUAGE SELECTED: "${LANGUAGES[$lang]}""
+    else
+        log_error "UNKNOWN OR UNSOPPORTED LANGUAGE: $lang"
+    fi
 }

@@ -51,14 +51,14 @@ clean_up() {
 	log_exit "PROCESS ABORTED"
 }
 
-trap '[[ -n "$BASE_DIRECTORY" ]] && clean_up "$BASE_DIRECTORY"' ERR
+trap '[[ -n "${BASE_DIRECTORY:-}" ]] && clean_up "$BASE_DIRECTORY"' ERR
 
 main() {
 	log_info "INITIALIZING SCRIPT"
 	define_route "$ROOT_DIRECTORY" "$NAME"
 	log_info "DIRECTORIES PROCESS COMPLETED"
 	check_language "$LANGUAGE"
-	create_README	
+	create_README "$BASE_DIRECTORY"
 	
 } 
 
