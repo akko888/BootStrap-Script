@@ -18,21 +18,16 @@ define_route(){
 
 	log_info "DIRECTORY $1/$2 CREATED"
 
-	create_subdirectories "$BASE_DIRECTORY"
-
 }
 
-create_subdirectories(){
+make_generic_structure() {
 	
-	log_info "CREATING SUBDIRECTORIES"
+	log_info "CREATING GENERIC STRUCTURE"
 
 	local base_dir="$1"
-	local subdirs=("src" "lib" "test" "scripts" "docs")
 
-	for dir in "${subdirs[@]}"; do
-		mkdir -p "$base_dir/$dir" || { log_error "FAILED TO CREATE $base_dir/$dir"; return 1; }
-	done
+	mkdir -p "$base_dir/src" || { log_error "FAIL TO CREATE GENERIC STRUCTURE [src]"; return 1; }
 
-	log_info "SUBDIRECTORIES CREATED"
+	log_info "GENERIC STRUCTURE CREATED"
 
 }

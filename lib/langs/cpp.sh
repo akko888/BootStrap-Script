@@ -19,7 +19,7 @@ create_files() {
 	
 	local base_dir="$1"
 
-	cat > "$base_dir/src/main.cpp" <<EOF
+	cat > "$base_dir/src/main.cpp" <<EOF || { log_error "FAIL TO CREATE main.cpp FILE"; return 1;}
 #include <iostream>
 
 int main(){
@@ -37,7 +37,7 @@ setup_build() {
 	local base_dir="$1"
 	local name="$2"
 
-	cat > "$base_dir/CMakeLists.txt" <<EOF
+	cat > "$base_dir/CMakeLists.txt" <<EOF || { log_error "FAIL TO CREATE CMakeLists.txt FILE"; return 1; }
 cmake_minimum_required(VERSION 3.10)
 
 project($name CXX)

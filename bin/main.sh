@@ -56,12 +56,12 @@ trap '[[ -n "${BASE_DIRECTORY:-}" ]] && clean_up "$BASE_DIRECTORY"' ERR
 main() {
 	log_info "INITIALIZING SCRIPT"
 	define_route "$ROOT_DIRECTORY" "$NAME"
-	log_info "DIRECTORIES PROCESS COMPLETED"
+	make_generic_structure "$BASE_DIRECTORY" 
 	check_language "$LANGUAGE"
 	make_structure "$BASE_DIRECTORY"
 	create_files "$BASE_DIRECTORY"
 	setup_build "$BASE_DIRECTORY" "$NAME"
-	create_README "$BASE_DIRECTORY"
+	create_README
 } 
 
 main "$@"

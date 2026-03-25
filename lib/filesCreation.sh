@@ -2,9 +2,7 @@ create_README() {
 
 	log_info "CREATING README FILE"
 
-	touch "$BASE_DIRECTORY/README.MD" || { log_error "FAIL TO CREATE README FILE"; return 1; }
-
-	cat > "$BASE_DIRECTORY/README.MD" <<EOF || { log_error "FAIL TO WRITE README FILE"; return 1; }
+	cat > "$BASE_DIRECTORY/README.MD" <<EOF || { log_error "FAIL TO CREATE README FILE"; return 1; }
 ### This is a new Project ฅ₍^•⩊ •マⳊ
 > STRUCTURE
 1. src = Here is all source code
