@@ -62,6 +62,24 @@ main() {
 	create_files "$BASE_DIRECTORY"
 	setup_build "$BASE_DIRECTORY" "$NAME"
 	create_README
-} 
+	create_gitignore	
+	git_init
+}
+
+git_init() {
+
+	log_info "INITIALIZING REPOSITORY"
+	
+	cd "$BASE_DIRECTORY" || { log_error "FAIL TO ENTER $BASE_DIRECTORY"; return 1; }
+
+	if [ ! -d ".git" ]; then
+		git init || { log_error "FAIL TO INITIALIZE"; return 1; }
+		git add .
+		git commit -m "Initial commit" || { log_error "FAIL TO COMMIT"; return 1; }
+	fi
+
+	log_info "REPOSITORY INITIALIZED CORRECTLY"
+
+}
 
 main "$@"

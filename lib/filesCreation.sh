@@ -15,3 +15,30 @@ EOF
 	log_info "README FILE CREATED"	
 
 }
+
+create_gitignore() {
+
+	log_info "CREATING .gitignore FILE"
+
+	cat > "$BASE_DIRECTORY/.gitignore" <<EOF || { log_error "FAIL TO CREATE .gitignore FILE"; return 1; }
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+
+# Logs
+.log
+logs/
+
+# Build
+bin/
+build/
+dist/
+EOF
+
+	log_info ".gitignore FILE CREATED "
+
+}
