@@ -64,6 +64,8 @@ main() {
 	create_README
 	create_gitignore	
 	git_init
+	log_success "SCRIPT FINALIZED CORRECTLY!"
+	exit
 }
 
 git_init() {

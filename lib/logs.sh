@@ -23,3 +23,7 @@ log_error() {
 log_exit() {
 	log "EXIT" "$1"
 }
+
+log_success() {
+	log "SUCCESS" "$1" 
+}
