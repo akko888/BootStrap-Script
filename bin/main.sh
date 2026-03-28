@@ -7,9 +7,24 @@ source "$(dirname "$0")/../lib/dirCreation.sh"
 source "$(dirname "$0")/../lib/filesCreation.sh"
 source "$(dirname "$0")/../lib/languageDef.sh"
 
+show_help() {
+	cat << EOF
+Usage: kirby [OPTIONS]
+
+Options:
+  -n, --name     Project name
+  -r, --root     Root directory
+  -l, --lang     Programming language
+  -h, --help     Show this help message and exit
+
+Examples:
+  kirby -n MyApp -r ~/projects -l java
+EOF
+}
+
 if [ $# -eq 0 ]; then
-	log_error "NOT ENOUGH ARGUMENTS"
-       	exit 1 	
+	show_help
+    exit 1 	
 fi
 
 NAME=""
@@ -25,6 +40,8 @@ while [[ $# -gt 0 ]]; do
 			ROOT_DIRECTORY="$2"; shift 2 ;;
 		-l|--lang)
 			LANGUAGE="$2"; shift 2 ;;
+		--help)
+			show_help; exit 0 ;;
 		--)
 			shift; break ;;
 		-*)
