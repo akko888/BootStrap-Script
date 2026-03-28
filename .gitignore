@@ -1,6 +1,16 @@
-#Tests
-tests/
+# OS
+.DS_Store
+Thumbs.db
 
-#logs 
+# Editors
+vscode/
+idea/
+
+#logs
+logs/ 
 *.log
 
+# Build
+bin/
+build/
+dist/
