@@ -2,10 +2,12 @@
 
 set -eEuo pipefail
 
-source "$(dirname "$0")/../lib/logs.sh"
-source "$(dirname "$0")/../lib/dirCreation.sh"
-source "$(dirname "$0")/../lib/filesCreation.sh"
-source "$(dirname "$0")/../lib/languageDef.sh"
+LIB_SOURCE="$(realpath "$(dirname "$(realpath "$0")")/../lib")"
+
+source "$LIB_SOURCE/logs.sh"
+source "$LIB_SOURCE/dirCreation.sh"
+source "$LIB_SOURCE/filesCreation.sh"
+source "$LIB_SOURCE/languageDef.sh"
 
 show_help() {
 	cat << EOF
@@ -18,7 +20,7 @@ Options:
   -h, --help     Show this help message and exit
 
 Examples:
-  kirby -n MyApp -r ~/projects -l java
+  kirby -n MyApp -r ~/projects -l cpp
 EOF
 }
 
@@ -74,7 +76,7 @@ main() {
 	log_info "INITIALIZING SCRIPT"
 	define_route "$ROOT_DIRECTORY" "$NAME"
 	make_generic_structure "$BASE_DIRECTORY" 
-	check_language "$LANGUAGE"
+	check_language "$LANGUAGE" "$LIB_SOURCE"
 	make_structure "$BASE_DIRECTORY"
 	create_files "$BASE_DIRECTORY"
 	setup_build "$BASE_DIRECTORY" "$NAME"

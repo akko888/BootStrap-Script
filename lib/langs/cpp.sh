@@ -45,7 +45,7 @@ project($name CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable($name src/main.c)
+add_executable($name src/main.cpp)
 EOF
 
 	log_info "CMAKE SETTINGS FOR C ++ CREATED"	

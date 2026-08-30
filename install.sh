@@ -31,4 +31,4 @@ sudo ln -sf "$INSTALL_LIB_DIR/bin/main.sh" "$INSTALL_BIN_LINK"
 
 echo "[SUCCESS] INSTALLED SUCCESSFULLY!"
 echo "You can run now"
-echo "$PROJECT_NAME -n MyProject -r /path -l java" 
+echo "$PROJECT_NAME -n MyProject -r /path -l cpp" 

@@ -5,18 +5,19 @@ define_route(){
 		return 1
 	fi
 
-	log_info "CREATING DIRECTORY $1/$2"
+	BASE_DIRECTORY="$1/$2"
+	BASE_DIRECTORY=${BASE_DIRECTORY//\/\///}
+
+	log_info "CREATING DIRECTORY $BASE_DIRECTORY"
 
 	if [[ -d "$1/$2" ]]; then
-		log_error "DIRECTORY $1/$2 ALREADY EXISTS"
+		log_error "DIRECTORY $BASE_DIRECTORY ALREADY EXISTS"
 		return 1
 	fi
 
-	mkdir -p "$1/$2" || { log_error "FAILED TO CREATE DIRECTORY $1/$2"; return 1; }
+	mkdir -p "$1/$2" || { log_error "FAILED TO CREATE DIRECTORY $BASE_DIRECTORY"; return 1; }
 
-	BASE_DIRECTORY="$1/$2"
-
-	log_info "DIRECTORY $1/$2 CREATED"
+	log_info "DIRECTORY $BASE_DIRECTORY CREATED"
 
 }
 
