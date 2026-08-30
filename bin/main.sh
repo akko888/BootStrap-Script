@@ -11,7 +11,7 @@ source "$LIB_SOURCE/languageDef.sh"
 
 show_help() {
 	cat << EOF
-Usage: kirby [OPTIONS]
+Usage: remzero [OPTIONS]
 
 Options:
   -n, --name     Project name
@@ -20,7 +20,7 @@ Options:
   -h, --help     Show this help message and exit
 
 Examples:
-  kirby -n MyApp -r ~/projects -l cpp
+  remzero -n MyApp -r ~/projects -l cpp
 EOF
 }
 

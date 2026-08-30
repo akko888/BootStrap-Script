@@ -2,7 +2,7 @@
 
 set -e
 
-PROJECT_NAME="kirby"
+PROJECT_NAME="remzero"
 INSTALL_LIB_DIR="/usr/local/lib/$PROJECT_NAME"
 INSTALL_BIN_LINK="/usr/local/bin/$PROJECT_NAME"
 

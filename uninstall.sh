@@ -2,7 +2,7 @@
 
 set -e
 
-PROJECT_NAME="kirby"
+PROJECT_NAME="remzero"
 
 sudo rm -rf "/usr/local/lib/$PROJECT_NAME"
 sudo rm -f "/usr/local/bin/$PROJECT_NAME"
