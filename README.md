@@ -15,7 +15,8 @@ The commmand "remzero" has the next options ⚞^. .^⚟:
 * -r or --root: It refers to the new project's root.
 * -n or --name: It refers to the new project's name
 * -l or --lang: It refers to the new project's programming language
-* --file-log: It lets you enable a file log if you need it
+* --log-file: It lets you enable a file log if you need it
+* --help: Default option to show help
 
 Just -n and -l are needed, if you don´t specify root, it uses "./" as default, a prompt would look like this:
 > remzero -n MyApp -r ~/projects -l cpp
