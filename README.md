@@ -1,4 +1,4 @@
-# RemZero ≽^-⩊-^≼
+# RemZero | CLI bash tool to generate basic C/C++ Structures ≽^-⩊-^≼
 This project is a command tool that lets you initialaze projects and repositories for C and C++, and more languages in the future, it gives you a blank paper to work in! /ᐠ > ˕ <マ ₊˚⊹♡
 
 # Usage (•˕ •マ.ᐟ

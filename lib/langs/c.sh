@@ -6,7 +6,7 @@ make_structure() {
 	local subdirs=("src" "include" "bin")
 
 	for dir in ${subdirs[@]}; do
-		mkdir -p "$base_dir/$dir" || { log_error "FAIL TO CREATE $base_dir/$dir"; return 1; }
+		mkdir -p "$base_dir/$dir" || { log_error "FAILED TO CREATE $base_dir/$dir"; return 1; }
 	done
 	
 	log_info "C STRUCTURE CREATED"
@@ -19,7 +19,7 @@ create_files() {
 	
 	local base_dir="$1"
 
-	cat > "$base_dir/src/main.c" <<EOF || { log_error "FAIL TO CREATE main.c FILE"; return 1; }
+	cat > "$base_dir/src/main.c" <<EOF || { log_error "FAILED TO CREATE main.c FILE"; return 1; }
 #include <stdio.h>
 
 int main(){
@@ -37,7 +37,7 @@ setup_build() {
 	local base_dir="$1"
 	local name="$2"
 
-	cat > "$base_dir/CMakeLists.txt" <<EOF || { log_error "FAIL TO CREATE CMakeLists.txt FILE"; return 1; }
+	cat > "$base_dir/CMakeLists.txt" <<EOF || { log_error "FAILED TO CREATE CMakeLists.txt FILE"; return 1; }
 cmake_minimum_required(VERSION 3.10)
 
 project($name C)

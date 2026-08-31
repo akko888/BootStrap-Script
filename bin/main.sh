@@ -33,6 +33,7 @@ NAME=""
 ROOT_DIRECTORY=""
 LANGUAGE=""
 BASE_DIRECTORY=""
+LOG_ENABLED=""
 
 while [[ $# -gt 0 ]]; do
 	case "$1" in
@@ -42,19 +43,28 @@ while [[ $# -gt 0 ]]; do
 			ROOT_DIRECTORY="$2"; shift 2 ;;
 		-l|--lang)
 			LANGUAGE="$2"; shift 2 ;;
+		--log-file)
+			LOG_ENABLED=true; shift ;;
 		--help)
 			show_help; exit 0 ;;
 		--)
 			shift; break ;;
 		-*)
-			log_error "UNKNOWN OPTION"; exit 1 ;;
+			echo "UNKNOWN OPTION"; exit 1 ;;
 		*)
-			log_error "UNKNOWN ARGUMENT"; exit 1 ;;
+			echo "UNKNOWN ARGUMENT"; exit 1 ;;
 	esac
 done
 
-if [[ -z  "$NAME" || -z "$ROOT_DIRECTORY" || -z "$LANGUAGE" ]]; then
-	log_error "MISSING REQUIRED ARGUMENTS: -n (Name), -r (Root) and -l (Language) all are required"
+create_log_file "$LOG_ENABLED"
+
+if [ -z "$ROOT_DIRECTORY" ]; then 
+	log_info "NO ROOT SPECIFIED. USING DEFAULT: \"./\""
+	ROOT_DIRECTORY="./"
+fi
+
+if [[ -z  "$NAME" || -z "$LANGUAGE" ]]; then
+	log_error "MISSING REQUIRED ARGUMENTS: -n (Name), -l (language) are required"
 	exit 1;
 fi
 
@@ -91,12 +101,12 @@ git_init() {
 
 	log_info "INITIALIZING REPOSITORY"
 	
-	cd "$BASE_DIRECTORY" || { log_error "FAIL TO ENTER $BASE_DIRECTORY"; return 1; }
+	cd "$BASE_DIRECTORY" || { log_error "FAILED TO ENTER $BASE_DIRECTORY"; return 1; }
 
 	if [ ! -d ".git" ]; then
 		git init || { log_error "FAIL TO INITIALIZE"; return 1; }
 		git add .
-		git commit -m "Initial commit" || { log_error "FAIL TO COMMIT"; return 1; }
+		git commit -m "Initial commit" || { log_error "FAILED TO COMMIT"; return 1; }
 	fi
 
 	log_info "REPOSITORY INITIALIZED CORRECTLY"

@@ -27,7 +27,7 @@ make_generic_structure() {
 
 	local base_dir="$1"
 
-	mkdir -p "$base_dir/src" || { log_error "FAIL TO CREATE GENERIC STRUCTURE [src]"; return 1; }
+	mkdir -p "$base_dir/src" || { log_error "FAILED TO CREATE GENERIC STRUCTURE [src]"; return 1; }
 
 	log_info "GENERIC STRUCTURE CREATED"
 

@@ -2,7 +2,7 @@ create_README() {
 
 	log_info "CREATING README FILE"
 
-	cat > "$BASE_DIRECTORY/README.MD" <<EOF || { log_error "FAIL TO CREATE README FILE"; return 1; }
+	cat > "$BASE_DIRECTORY/README.MD" <<EOF || { log_error "FAILED TO CREATE README FILE"; return 1; }
 ### This is a new Project ฅ₍^•⩊ •マⳊ
 > STRUCTURE
 1. src = Here is all source code
@@ -20,7 +20,7 @@ create_gitignore() {
 
 	log_info "CREATING .gitignore FILE"
 
-	cat > "$BASE_DIRECTORY/.gitignore" <<EOF || { log_error "FAIL TO CREATE .gitignore FILE"; return 1; }
+	cat > "$BASE_DIRECTORY/.gitignore" <<EOF || { log_error "FAILED TO CREATE .gitignore FILE"; return 1; }
 # OS
 .DS_Store
 Thumbs.db
